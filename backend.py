@@ -85,9 +85,7 @@ def extrair_dados(
 
     # Seleciona apenas as colunas úteis
     colunas = [
-        "data_inicio", "data_fim", "unidade", "idUserUnit",
-        "description", "quantity", "baseValue", "companyValueReceived", "valuePaid", 
-        "resultFromReceived"
+        "data_inicio", "data_fim", "unidade", "idUserUnit","description", "quantity", "baseValue", "companyValueReceived", "valuePaid", "resultFromReceived"
     ]
     colunas_existentes = [c for c in colunas if c in df_final.columns]
     return df_final[colunas_existentes]
