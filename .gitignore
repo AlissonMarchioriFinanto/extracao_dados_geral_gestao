@@ -1,0 +1,13 @@
+# Ignorar ambiente virtual e caches
+venv/
+__pycache__/
+*.pyc
+
+# Ignorar arquivos temporários e locais
+*.csv
+*.xlsx
+*.log
+.DS_Store
+
+# Ignorar arquivos de ambiente
+.env
