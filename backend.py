@@ -78,17 +78,16 @@ def extrair_dados(
                 resultados.append(df_temp)
         else:
             print(f"Erro {response.status_code} ao consultar unidade {nome_unidade}")
+        if not resultados:
+            return pd.DataFrame()
 
-    if not resultados:
-        return pd.DataFrame()
+        df_final = pd.concat(resultados, ignore_index=True)
 
-    df_final = pd.concat(resultados, ignore_index=True)
-
-    # Seleciona apenas as colunas úteis
-    colunas = [
-        "data_inicio", "data_fim", "unidade", "idUserUnit",
-        "description", "quantity", "baseValue", "valuePaid", 
-        "resultFromReceived"
-    ]
-    colunas_existentes = [c for c in colunas if c in df_final.columns]
-    return df_final[colunas_existentes]
+        colunas = [
+            "data_inicio", "data_fim", "unidade", "idUserUnit",
+            "description", "quantity", "baseValue","companyValueReceived", "valueCompany", "valuePaid", 
+            "resultFromReceived"
+        ]
+        colunas_existentes = [c for c in colunas if c in df_final.columns]
+        print("Colunas retornadas pela API:", df_final.columns.tolist())
+        return df_final[colunas_existentes]
